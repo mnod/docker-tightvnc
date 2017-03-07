@@ -1,4 +1,4 @@
-From debian:jessie
+From debian:wheezy
 
 RUN sed -i -e 's/$/ contrib non-free/' /etc/apt/sources.list
 RUN apt-get update && apt-get install --no-install-recommends -y \
