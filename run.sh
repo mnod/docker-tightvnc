@@ -17,7 +17,7 @@ vncdir=~docker/.vnc
 vncpassfile=${vncdir}/passwd
 mkdir ${vncdir}
 chmod 700 ${vncdir}
-echo | vncpasswd -f > ${vncpassfile}
+echo ${PASS} | vncpasswd -f > ${vncpassfile}
 chmod 600 ${vncpassfile}
 chown -R docker:docker ${vncdir}
 
