@@ -4,6 +4,9 @@ PASS=`pwgen -s 12 1`
 echo ${PASS}
 echo docker:${PASS} | chpasswd
 
+echo $1
+echo $2
+
 if [ $# -eq 1 ]; then
   sshdir=~docker/.ssh
   keyfile=$sshdir/authorized_keys
