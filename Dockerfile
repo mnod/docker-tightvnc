@@ -33,10 +33,5 @@ ADD run.sh /run.sh
 RUN chmod +x /run.sh
 RUN useradd -s /bin/bash -m docker
 
-# RUN locale-gen ja_JP.UTF-8  
-ENV LANG ja_JP.UTF-8  
-ENV LANGUAGE ja_JP:en  
-ENV LC_ALL ja_JP.UTF-8
-
 EXPOSE 22
 CMD ["/run.sh"]
