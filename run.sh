@@ -1,11 +1,8 @@
-#! /bin/bash -x
+#! /bin/bash
 
 PASS=`pwgen -s 12 1`
 echo ${PASS}
 echo docker:${PASS} | chpasswd
-
-echo $1
-echo $2
 
 if [ $# -eq 1 ]; then
   sshdir=~docker/.ssh
@@ -20,7 +17,7 @@ vncdir=~docker/.vnc
 vncpassfile=${vncdir}/passwd
 mkdir ${vncdir}
 chmod 700 ${vncdir}
-echo ${PASS} | vncpasswd -f > ${vncpassfile}
+echo | vncpasswd -f > ${vncpassfile}
 chmod 600 ${vncpassfile}
 chown -R docker:docker ${vncdir}
 
