@@ -1,37 +1,33 @@
-From debian:wheezy
+From ubuntu:20.04
 
-RUN sed -i -e 's/$/ contrib non-free/' /etc/apt/sources.list
-RUN apt-get update && apt-get install --no-install-recommends -y \
-    dynamips \
-    dynagen \
-    telnet \
-    tcpdump \
-    screen \
+RUN apt update && DEBIAN_FRONTEND=noninteractive apt install --no-install-recommends -y \
     git \
-    subversion \
     vim-tiny \
-    openssh-server \
-    pwgen \ 
-    ca-certificates \
-    locales \
-    lxde \
-    tightvncserver \
+    tmux \
+    pwgen \
+    openssh-client \
+    openbox \
+    tint2 \
     xfonts-base \
-    iceweasel \
-    dbus-x11 ibus-anthy fonts-ipafont \
+    tightvncserver \
+    firefox \
+    xrdp \
+    pcmanfm \
+    lxterminal \
+    meld \
+    scite \
+    dbus-x11 \
+    ibus-anthy \
+    ibus-gtk \
+    ibus-gtk3 \
+    fonts-ipaexfont \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p /var/run/sshd
-RUN sed -i -e '/PermitRootLogin/ s/yes/no/' /etc/ssh/sshd_config
-
-RUN sed -i -e 's/^# ja_JP.UTF-8/ja_JP.UTF-8/' /etc/locale.gen && \
-    locale-gen && \
-    update-locale LANG=ja_JP.UTF-8
-
+ADD xrdp.ini /etc/xrdp/xrdp.ini
 ADD run.sh /run.sh
 RUN chmod +x /run.sh
 RUN useradd -s /bin/bash -m docker
 
-EXPOSE 22
+EXPOSE 3389
 CMD ["/run.sh"]
