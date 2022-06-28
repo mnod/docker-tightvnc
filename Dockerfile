@@ -2,7 +2,6 @@ From ubuntu:20.04
 
 RUN echo locales locales/default_environment_locale select en_US.UTF-8 | debconf-set-selections \
 && echo locales locales/locales_to_be_generated select "en_US.UTF-8 UTF-8" | debconf-set-selections \
-&& sed -i -r 's!(deb|deb-src) \S+!\1 mirror://mirrors.ubuntu.com/mirrors.txt!' /etc/apt/sources.list \
 && apt update && DEBIAN_FRONTEND=noninteractive apt install --no-install-recommends -y \
     locales \
     git \
