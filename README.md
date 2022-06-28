@@ -36,7 +36,7 @@ or if you don't have a home directory,
 
     docker run --rm -d -p <localport>:3389 docker-tightvnc:latest
 
-If there is .vnc/passwd file in the home directory you spicified, it is used for vnc password.
+If there is .vnc/passwd file in the home directory you specified, it is used for vnc password.
 If it does not exist, the container generate a new password and put it into .vnc/passwd file.
 
 To show the new generated password
